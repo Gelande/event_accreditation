@@ -4,6 +4,7 @@ import userEvent from '@testing-library/user-event';
 import { CheckInPage } from './CheckInPage';
 import * as useCheckInDataModule from './useCheckInData';
 import * as useCheckInActionsModule from './useCheckInActions';
+import type { Participant } from './checkinTypes';
 
 vi.mock('./useCheckInData', () => ({
   useCheckInData: vi.fn(),
@@ -28,12 +29,13 @@ describe('CheckInPage', () => {
     clearActionError: mockClearActionError,
   };
 
-  const mockParticipants = [
+  const mockParticipants: Participant[] = [
     {
       id: 'p1',
       name: 'João Silva',
       email: 'joao.silva@example.com',
       document_id: 'DOC-111',
+      ticket_type: 'Star',
       created_at: '2026-09-17T00:00:00Z',
     },
     {
@@ -41,6 +43,7 @@ describe('CheckInPage', () => {
       name: 'Maria Santos',
       email: 'maria@example.com',
       document_id: 'DOC-222',
+      ticket_type: 'Constellation',
       created_at: '2026-09-17T00:00:00Z',
     },
   ];

@@ -42,7 +42,7 @@ describe('useCheckInData', () => {
 
   it('loads participants and subscribes when enabled and online', async () => {
     const mockParticipants = [
-      { id: 'p1', name: 'John Doe', email: 'john@example.com', document_id: '123', created_at: '2026-09-17T00:00:00Z' },
+      { id: 'p1', name: 'John Doe', email: 'john@example.com', document_id: '123', ticket_type: 'Star' as const, created_at: '2026-09-17T00:00:00Z' },
     ];
     
     vi.mocked(checkinApi.fetchParticipants).mockResolvedValue(mockParticipants);

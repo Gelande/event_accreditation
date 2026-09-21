@@ -4,7 +4,7 @@ import type { ActiveCheckInMap, CheckIn, Participant } from './checkinTypes';
 export async function fetchParticipants(): Promise<Participant[]> {
   const { data, error } = await supabase
     .from('participants')
-    .select('id, name, email, document_id, created_at')
+    .select('id, name, email, document_id, ticket_type, created_at')
     .order('name', { ascending: true });
 
   if (error) {

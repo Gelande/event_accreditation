@@ -20,11 +20,17 @@ Open app -> login -> search -> identify participant -> check in -> next particip
 - Discreet logout
 
 ## Search
-One field searches locally by name, email, or document/NIF.
+One field searches locally by name, email, document/NIF, or ticket type.
+
+## Ticket Types and Materials
+- Two ticket types exist: `Star` and `Constellation`.
+- Each participant card displays a high-visibility badge with their ticket type and instructions for materials to deliver:
+  - Star: `Kit Star + Credencial Star`
+  - Constellation: `Kit Constellation + Credencial Constellation`
 
 ## Participant states
 ### Not checked in
-Show identity fields and primary `CHECK-IN` action.
+Show identity fields, ticket type / material banner, and primary `CHECK-IN` action.
 
 ### Processing
 Disable repeat taps and show progress.

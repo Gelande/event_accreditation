@@ -26,7 +26,14 @@ BEGIN
     RAISE EXCEPTION 'Verification Failed: table public.checkins does not exist';
   END IF;
 
-  RAISE NOTICE 'Test 1 Passed: Tables exist.';
+  IF NOT EXISTS (
+    SELECT 1 FROM information_schema.columns
+    WHERE table_schema = 'public' AND table_name = 'participants' AND column_name = 'ticket_type'
+  ) THEN
+    RAISE EXCEPTION 'Verification Failed: column participants.ticket_type does not exist';
+  END IF;
+
+  RAISE NOTICE 'Test 1 Passed: Tables and columns exist.';
 
   -- --------------------------------------------------------------------------
   -- TEST 2: RLS Enabled

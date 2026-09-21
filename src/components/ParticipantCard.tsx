@@ -64,6 +64,41 @@ export function ParticipantCard({
               <span className="font-mono">{participant.document_id}</span>
             )}
           </div>
+
+          {/* Ticket Type & Kit/Credential Delivery Banner */}
+          <div className="mt-2.5">
+            {participant.ticket_type === 'Constellation' ? (
+              <div
+                data-testid={`ticket-info-${participant.id}`}
+                className="flex flex-wrap items-center gap-1.5 rounded-lg border border-amber-200 bg-amber-50/90 px-2.5 py-1.5 text-xs text-amber-900"
+              >
+                <span
+                  data-testid={`ticket-badge-${participant.id}`}
+                  className="inline-flex items-center gap-1 rounded-md bg-amber-200/80 px-2 py-0.5 font-bold text-amber-950"
+                >
+                  <span aria-hidden="true">✨</span> Constellation
+                </span>
+                <span className="font-medium text-amber-800">
+                  Entregar: Kit Constellation + Credencial Constellation
+                </span>
+              </div>
+            ) : (
+              <div
+                data-testid={`ticket-info-${participant.id}`}
+                className="flex flex-wrap items-center gap-1.5 rounded-lg border border-indigo-200 bg-indigo-50/90 px-2.5 py-1.5 text-xs text-indigo-900"
+              >
+                <span
+                  data-testid={`ticket-badge-${participant.id}`}
+                  className="inline-flex items-center gap-1 rounded-md bg-indigo-200/80 px-2 py-0.5 font-bold text-indigo-950"
+                >
+                  <span aria-hidden="true">⭐</span> Star
+                </span>
+                <span className="font-medium text-indigo-800">
+                  Entregar: Kit Star + Credencial Star
+                </span>
+              </div>
+            )}
+          </div>
         </div>
 
         {/* Status Badge */}

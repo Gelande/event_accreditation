@@ -10,6 +10,7 @@ describe('ParticipantCard', () => {
     name: 'Sofia Mendes',
     email: 'sofia@example.com',
     document_id: 'DOC-12345',
+    ticket_type: 'Star',
     created_at: '2026-09-17T00:00:00Z',
   };
 
@@ -128,5 +129,32 @@ describe('ParticipantCard', () => {
     const checkInBtn = screen.getByRole('button', { name: /check in sofia mendes/i });
     expect(checkInBtn).toBeDisabled();
     expect(checkInBtn).toHaveTextContent('Checking in...');
+  });
+
+  it('renders Star ticket type badge and kit delivery instructions', () => {
+    render(<ParticipantCard participant={mockParticipant} />);
+
+    expect(screen.getByTestId('ticket-info-p-1')).toBeInTheDocument();
+    expect(screen.getByTestId('ticket-badge-p-1')).toHaveTextContent('Star');
+    expect(
+      screen.getByText('Entregar: Kit Star + Credencial Star'),
+    ).toBeInTheDocument();
+  });
+
+  it('renders Constellation ticket type badge and kit delivery instructions', () => {
+    const constellationParticipant: Participant = {
+      ...mockParticipant,
+      id: 'p-constellation',
+      name: 'Lucas Ferreira',
+      ticket_type: 'Constellation',
+    };
+
+    render(<ParticipantCard participant={constellationParticipant} />);
+
+    expect(screen.getByTestId('ticket-info-p-constellation')).toBeInTheDocument();
+    expect(screen.getByTestId('ticket-badge-p-constellation')).toHaveTextContent('Constellation');
+    expect(
+      screen.getByText('Entregar: Kit Constellation + Credencial Constellation'),
+    ).toBeInTheDocument();
   });
 });

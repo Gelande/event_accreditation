@@ -20,6 +20,7 @@ export function normalizeSearchString(text: string): string {
  * - name (diacritic-tolerant, case-insensitive, partial match)
  * - email (case-insensitive, partial match)
  * - document_id (case-insensitive, partial match)
+ * - ticket_type (case-insensitive, partial match)
  *
  * Does not make network requests.
  */
@@ -41,7 +42,10 @@ export function filterParticipants(
     const documentMatch = participant.document_id
       ? normalizeSearchString(participant.document_id).includes(normalizedQuery)
       : false;
+    const ticketMatch = participant.ticket_type
+      ? normalizeSearchString(participant.ticket_type).includes(normalizedQuery)
+      : false;
 
-    return nameMatch || emailMatch || documentMatch;
+    return nameMatch || emailMatch || documentMatch || ticketMatch;
   });
 }

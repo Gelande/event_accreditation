@@ -6,9 +6,10 @@
 - `name text not null`
 - `email text null`
 - `document_id text null`
+- `ticket_type text not null default 'Star' check (ticket_type in ('Star', 'Constellation'))`
 - `created_at timestamptz not null default now()`
 
-`id` is an internal UUID. `document_id` may contain a NIF or another document value and may be null.
+`id` is an internal UUID. `document_id` may contain a NIF or another document value and may be null. `ticket_type` specifies whether the attendee holds a 'Star' or 'Constellation' ticket, determining the kit and credential to provide upon check-in.
 
 Authenticated staff can read participants but cannot insert, update, or delete them through the application.
 

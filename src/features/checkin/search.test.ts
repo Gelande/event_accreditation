@@ -22,6 +22,7 @@ describe('search', () => {
         name: 'João Gonçalves Silva',
         email: 'joao.silva@example.com',
         document_id: '12345678',
+        ticket_type: 'Star',
         created_at: '2026-09-17T00:00:00Z',
       },
       {
@@ -29,6 +30,7 @@ describe('search', () => {
         name: 'Maria Clara dos Santos',
         email: 'maria.santos@event.org',
         document_id: 'NIF-987654',
+        ticket_type: 'Constellation',
         created_at: '2026-09-17T00:00:00Z',
       },
       {
@@ -36,6 +38,7 @@ describe('search', () => {
         name: 'Élise Dubois',
         email: null,
         document_id: null,
+        ticket_type: 'Star',
         created_at: '2026-09-17T00:00:00Z',
       },
       {
@@ -43,6 +46,7 @@ describe('search', () => {
         name: 'Carlos Alberto Perez',
         email: 'carlos@empresa.pt',
         document_id: 'PT888999',
+        ticket_type: 'Star',
         created_at: '2026-09-17T00:00:00Z',
       },
     ];
@@ -86,6 +90,15 @@ describe('search', () => {
       const results = filterParticipants(mockParticipants, 'dubois');
       expect(results).toHaveLength(1);
       expect(results[0]?.name).toBe('Élise Dubois');
+    });
+
+    it('matches by ticket type', () => {
+      const resultsConstellation = filterParticipants(mockParticipants, 'constellation');
+      expect(resultsConstellation).toHaveLength(1);
+      expect(resultsConstellation[0]?.name).toBe('Maria Clara dos Santos');
+
+      const resultsStar = filterParticipants(mockParticipants, 'star');
+      expect(resultsStar).toHaveLength(3);
     });
 
     it('returns empty array when no participant matches', () => {

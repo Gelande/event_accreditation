@@ -1,8 +1,11 @@
+export type TicketType = 'Star' | 'Constellation';
+
 export interface Participant {
   id: string;
   name: string;
   email: string | null;
   document_id: string | null;
+  ticket_type: TicketType;
   created_at: string;
 }
 

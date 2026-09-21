@@ -63,7 +63,7 @@ describe('App', () => {
 
     vi.mocked(useCheckInDataModule.useCheckInData).mockReturnValue({
       participants: [
-        { id: 'p1', name: 'Ana Oliveira', email: 'ana@example.com', document_id: null, created_at: '2026-09-17T00:00:00Z' },
+        { id: 'p1', name: 'Ana Oliveira', email: 'ana@example.com', document_id: null, ticket_type: 'Star', created_at: '2026-09-17T00:00:00Z' },
       ],
       activeCheckIns: {},
       isLoading: false,
